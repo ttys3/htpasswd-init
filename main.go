@@ -1,13 +1,22 @@
 package main
 
 import (
+	"flag"
 	"log"
 	"github.com/foomo/htpasswd"
 	"os"
+	"strings"
 )
 
+var outfile string
+
+func init() {
+	flag.StringVar(&outfile, "out", "/etc/nginx/fancyindex.htpasswd", "htpasswd output path")
+	flag.Parse()
+}
+
 func main() {
-	file := "/tmp/fancyindex.htpasswd"
+	file := outfile
 	name := "admin"
 	password := "admin"
 	envName := os.Getenv("HTTP_USERNAME")
@@ -17,6 +26,9 @@ func main() {
 	}
 	if envPasswd != "" {
 		password = envPasswd
+	}
+	if !strings.HasSuffix(file, "htpasswd") {
+		file += ".htpasswd"
 	}
 	os.Remove(file)
 	if err := htpasswd.SetPassword(file, name, password, htpasswd.HashBCrypt); err == nil {
