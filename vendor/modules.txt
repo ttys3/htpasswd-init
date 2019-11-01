@@ -1,0 +1,5 @@
+# github.com/foomo/htpasswd v0.0.0-20180422071726-cb63c4ac0e50
+github.com/foomo/htpasswd
+# golang.org/x/crypto v0.0.0-20191029031824-8986dd9e96cf
+golang.org/x/crypto/bcrypt
+golang.org/x/crypto/blowfish
