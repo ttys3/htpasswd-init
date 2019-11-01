@@ -2,20 +2,29 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"log"
 	"github.com/foomo/htpasswd"
 	"os"
 	"strings"
 )
 
+var Version = "dev"
+
 var outfile string
+var showVersion bool
 
 func init() {
 	flag.StringVar(&outfile, "out", "/etc/nginx/fancyindex.htpasswd", "htpasswd output path")
+	flag.BoolVar(&showVersion, "v", false, "show version")
 	flag.Parse()
 }
 
 func main() {
+	if showVersion {
+		fmt.Println(Version)
+		return
+	}
 	file := outfile
 	name := "admin"
 	password := "admin"
