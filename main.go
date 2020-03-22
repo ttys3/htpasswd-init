@@ -4,9 +4,10 @@ import (
 	"flag"
 	"fmt"
 	"log"
-	"github.com/foomo/htpasswd"
 	"os"
 	"strings"
+
+	"github.com/foomo/htpasswd"
 )
 
 var Version = "dev"
@@ -22,7 +23,9 @@ func init() {
 
 func main() {
 	if showVersion {
-		fmt.Println(Version)
+		fmt.Println("Name:    htpasswd-init")
+		fmt.Println("Version: " + Version)
+		fmt.Println("Author:  荒野無燈")
 		return
 	}
 	file := outfile
