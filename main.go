@@ -16,7 +16,7 @@ var outfile string
 var showVersion bool
 
 func init() {
-	flag.StringVar(&outfile, "out", "/etc/nginx/fancyindex.htpasswd", "htpasswd output path")
+	flag.StringVar(&outfile, "out", "/etc/nginx/.htpasswd", "htpasswd output path")
 	flag.BoolVar(&showVersion, "v", false, "show version")
 	flag.Parse()
 }
@@ -31,8 +31,8 @@ func main() {
 	file := outfile
 	name := "admin"
 	password := "admin"
-	envName := os.Getenv("HTTP_USERNAME")
-	envPasswd := os.Getenv("HTTP_PASSWD")
+	envName := os.Getenv("HTTP_AUTH_USER")
+	envPasswd := os.Getenv("HTTP_AUTH_PASSWD")
 	if envName != "" {
 		name = envName
 	}
