@@ -1,4 +1,4 @@
-module htpasswd
+module htpasswd-init
 
 go 1.13
 
